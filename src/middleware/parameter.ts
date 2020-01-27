@@ -30,10 +30,10 @@ export function parameter<TName extends string, TType>(
         try {
           ctx.state.params = ctx.state.params ?? {};
           ctx.state.params[name] = await validator.validate(value);
-          await next();
         } catch (error) {
           throw new InvalidParameterError(name, 'path', error);
         }
+        await next();
       },
       updatePathParameter(name, {
         description: opts.description,

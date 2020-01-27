@@ -123,7 +123,6 @@ export function query<TName extends string, TType>(
           } else {
             ctx.state.params[name] = await validator.validate(value);
           }
-          await next();
         } catch (error) {
           if (error instanceof ValidationError) {
             throw new InvalidParameterError(name, 'query', error);
@@ -131,6 +130,8 @@ export function query<TName extends string, TType>(
             throw error;
           }
         }
+
+        await next();
       },
       opts.storeAsComponent
         ? combineMetadata(
