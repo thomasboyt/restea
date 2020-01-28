@@ -5,7 +5,8 @@
   "types": "dist/index.d.ts",
   "scripts": {
     "build": "tsc --project tsconfig.json",
-    "clean": "rimraf dist"
+    "clean": "rimraf dist",
+    "prepare": "npm run build"
   },
   "dependencies": {
     "ajv": "^6.10.2",
