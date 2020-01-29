@@ -26,6 +26,7 @@ export function errorHandler(): Middleware<{ id: string }> {
           },
         };
         ctx.status = 500;
+        ctx.app.emit('error', error, ctx);
       }
     }
   };
